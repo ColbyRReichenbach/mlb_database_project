@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+config/settings.yaml
+logs/
+data/
