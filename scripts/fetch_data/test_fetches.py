@@ -2,9 +2,10 @@ import pandas as pd
 from pybaseball import (
     team_batting, team_pitching, team_fielding,
     standings, schedule_and_record, batting_stats,
-    pitching_stats, amateur_draft_by_team
+    pitching_stats, amateur_draft_by_team, team_game_logs
 )
 from mlb_database_project.config.db_config import get_team_abbreviations
+
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
@@ -47,5 +48,9 @@ if __name__ == "__main__":
 
     # Amateur Draft - Team-based
     fetch_and_inspect(amateur_draft_by_team, TEST_YEAR, TEST_TEAM)
+
+    # Team Game Logs - Batting & Pitching
+    fetch_and_inspect(team_game_logs, TEST_YEAR, TEST_TEAM, "batting")
+    fetch_and_inspect(team_game_logs, TEST_YEAR, TEST_TEAM, "pitching")
 
     print("\n=== Test Complete ===")
