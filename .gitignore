@@ -4,3 +4,4 @@ config/settings.yaml
 logs/
 data/
 .DS_Store
+config/settings.yaml

@@ -1,0 +1,25 @@
+import os
+import yaml
+
+# Load YAML settings
+with open("config/settings.yaml", "r") as file:
+    config = yaml.safe_load(file)
+
+# Override sensitive values from environment variables
+config["database"]["username"] = os.getenv("MLB_DB_USER", config["database"]["username"])
+config["database"]["password"] = os.getenv("MLB_DB_PASSWORD", config["database"]["password"])
+
+# Function to return database connection string
+def get_db_connection_string():
+    return (
+        f"postgresql://{config['database']['username']}:{config['database']['password']}"
+        f"@{config['database']['server']}:{config['database']['port']}/{config['database']['name']}"
+    )
+
+# Function to return team abbreviations
+def get_team_abbreviations():
+    return config["settings"]["team_abbreviations"]
+
+# Function to return start year
+def get_start_year():
+    return config["settings"]["start_year"]
