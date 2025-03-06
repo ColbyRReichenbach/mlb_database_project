@@ -4,3 +4,19 @@
 - Added `.gitignore` rule to exclude `settings.yaml
 - Removed `settings.yaml` from Git tracking for security
 - Verified that database credentials are now securely loaded via environment variables
+
+## [Version 1.2] - 2025-03-06
+### Added:
+- Created scripts to fetch and store MLB data:
+  - Team stats (batting, pitching, fielding)
+  - Player stats (batting & pitching)
+  - Yearly standings
+  - Game logs for each team
+  - Amateur draft picks
+- Implemented data cleaning (dropping fully empty columns, replacing NaNs with None)
+- Ensured database integration with PostgreSQL
+
+### Next Steps:
+- Run fetch scripts to analyze column structure
+- Define the final database schema based on fetched data
+
