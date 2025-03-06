@@ -9,9 +9,9 @@ def clean_data(df):
     return df.where(pd.notna(df), None)
 
 
-def fetch_standings(year):
-    print(f"Fetching standings for {year}...")
-    return clean_data(standings(year))
+def fetch_standings(year, team):
+    print(f"Fetching standings for {year} and {team}...")
+    return clean_data(standings(year, team))
 
 
 def store_standings(df, engine):

@@ -5,6 +5,8 @@ from pybaseball import (
     pitching_stats, amateur_draft_by_team
 )
 from mlb_database_project.config.db_config import get_team_abbreviations
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
 
 # Set test year and team
 TEST_YEAR = 2023
@@ -29,15 +31,15 @@ if __name__ == "__main__":
     print("\n=== Running Data Fetch Tests ===")
 
     # Team stats (batting, pitching, fielding) - Yearly
-    fetch_and_inspect(team_batting, TEST_YEAR, 1)
-    fetch_and_inspect(team_pitching, TEST_YEAR, 1)
-    fetch_and_inspect(team_fielding, TEST_YEAR, 1)
+    fetch_and_inspect(team_batting, TEST_YEAR)
+    fetch_and_inspect(team_pitching, TEST_YEAR)
+    fetch_and_inspect(team_fielding, TEST_YEAR)
 
     # Standings - Yearly
     fetch_and_inspect(standings, TEST_YEAR)
 
     # Game logs (schedule & record) - Team-based
-    fetch_and_inspect(schedule_and_record, f"{TEST_YEAR}-01-01", f"{TEST_YEAR}-12-31", TEST_TEAM)
+    fetch_and_inspect(schedule_and_record, TEST_YEAR, TEST_TEAM)
 
     # Player stats (batting & pitching) - Yearly
     fetch_and_inspect(batting_stats, TEST_YEAR)

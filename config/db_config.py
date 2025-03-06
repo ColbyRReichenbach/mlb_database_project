@@ -1,8 +1,16 @@
 import os
 import yaml
 
+# Ensure the script finds settings.yaml
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SETTINGS_PATH = os.path.join(BASE_DIR, "config", "settings.yaml")
+
+# Debugging: Check if the path exists
+if not os.path.exists(SETTINGS_PATH):
+    raise FileNotFoundError(f"settings.yaml not found at {SETTINGS_PATH}")
+
 # Load YAML settings
-with open("config/settings.yaml", "r") as file:
+with open(SETTINGS_PATH, "r") as file:
     config = yaml.safe_load(file)
 
 # Override sensitive values from environment variables
