@@ -11,6 +11,12 @@ START_YEAR = get_start_year()
 END_YEAR = 2024  # Can adjust if needed - or after 2025 season
 
 
+def clean_data(df):
+    """Drops columns where every row is NaN and replaces other NaNs with None for PostgreSQL compatibility."""
+    df = df.dropna(axis=1, how='all')
+    return df.where(pd.notna(df), None)
+
+
 # Function to fetch game logs for all teams over multiple seasons
 def fetch_game_logs(save_to_db=True):
     """
@@ -29,7 +35,7 @@ def fetch_game_logs(save_to_db=True):
         for team in TEAMS:
             print(f"Fetching Batting Logs: {team} ({year})...")
             try:
-                batting_logs = team_game_logs(year, team, log_type="batting")
+                batting_logs = clean_data(team_game_logs(year, team, log_type="batting"))
                 batting_logs["season"] = year
                 batting_logs["team"] = team
                 batting_logs_list.append(batting_logs)
@@ -38,7 +44,7 @@ def fetch_game_logs(save_to_db=True):
 
             print(f"Fetching Pitching Logs: {team} ({year})...")
             try:
-                pitching_logs = team_game_logs(year, team, log_type="pitching")
+                pitching_logs = clean_data(team_game_logs(year, team, log_type="pitching"))
                 pitching_logs["season"] = year
                 pitching_logs["team"] = team
                 pitching_logs_list.append(pitching_logs)
