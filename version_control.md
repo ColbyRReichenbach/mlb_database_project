@@ -20,3 +20,9 @@
 - Run fetch scripts to analyze column structure
 - Define the final database schema based on fetched data
 
+## [Version 1.2] - 2025-03-06 7:00pm est
+### Changes:
+- reworked db_management subfolder - merged create_tables into create_db - created create_mlb_database.sql for schema.
+- updated fetch_game_logs to include clean function
+
+- Next - fetch data and store it.
