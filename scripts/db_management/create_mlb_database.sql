@@ -447,9 +447,14 @@ CREATE TABLE team_fielding (
 -- ======================================================
 DROP TABLE IF EXISTS standings;
 CREATE TABLE standings (
-    Season  INTEGER,
-    data    JSONB  -- Use JSONB if the standings fetch is wide or may vary
+    "Season" INTEGER,
+    "Tm" TEXT,
+    "W" INTEGER,
+    "L" INTEGER,
+    "W-L%" DOUBLE PRECISION,
+    "GB" TEXT
 );
+
 
 -- ======================================================
 -- Table for schedule and record (game-by-game schedule/results for a team)

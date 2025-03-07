@@ -26,3 +26,9 @@
 - updated fetch_game_logs to include clean function
 
 - Next - fetch data and store it.
+
+## [Version 1.3]] - 2025-03-9:44pm est
+- Rewrote fetches due to errors with missing columns in data - uses expected columns, filling wiht none if no values
+- added a bref abbreviations in settings due to bref having different abbreviations for teams
+- Rewrote create_mlb_database to ensure data types and column anmes were correcty
+

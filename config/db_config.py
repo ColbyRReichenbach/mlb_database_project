@@ -33,6 +33,11 @@ def get_db_connection_string():
 def get_team_abbreviations():
     return config["settings"]["team_abbreviations"]
 
+def get_bref():
+    return config["settings"]["bref"]
+
+def get_draft():
+    return config["settings"]["draft"]
 
 # Function to return start year
 def get_start_year():
