@@ -19,9 +19,8 @@ def fetch_and_inspect(fetch_function, *args):
     try:
         df = fetch_function(*args)
         if isinstance(df, pd.DataFrame):
-            print(f"\n=== {fetch_function.__name__} ({args}) ===")
+            print(f"\n=== {fetch_function} ({args}) ===")
             print(df.dtypes)  # Display column names and data types
-            print(df.head(3))  # Display first few rows
         else:
             print(f"\n[WARNING] {fetch_function.__name__} did not return a DataFrame.")
     except Exception as e:
